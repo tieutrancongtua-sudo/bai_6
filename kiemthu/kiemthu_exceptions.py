@@ -25,7 +25,7 @@ gv = Lecturer("GV001", "Nguyễn Văn A")
 tg = TeachingAssistant("TG001", "Trần Thị B")
 
 
-print("[1] Mượn điều hòa UnderMaintenance")
+print("1 Mượn điều hòa UnderMaintenance")
 ac = AirConditionerController("TB002", "Điều khiển điều hòa", 2018, 800_000)
 ac.status = DeviceStatus.UNDER_MAINTENANCE
 slip = BorrowingSlip("PM001", gv, "A101", datetime(2024, 1, 10))
@@ -35,7 +35,7 @@ except DeviceUnavailableException as e:
     print("  Lỗi:", e)
 
 
-print("[2] Trợ giảng mượn thiết bị thứ 3")
+print("2 Trợ giảng mượn thiết bị thứ 3")
 m1 = Microphone("TB101", "Micro 1", 2023, 500_000)
 m2 = Microphone("TB102", "Micro 2", 2023, 500_000)
 m3 = Microphone("TB103", "Micro 3", 2023, 500_000)
@@ -48,7 +48,7 @@ except BorrowLimitExceededException as e:
     print("  Lỗi:", e)
 
 
-print("[3] Thêm cùng 1 micro 2 lần")
+print("3 Thêm cùng 1 micro 2 lần")
 mic = Microphone("TB201", "Micro trùng", 2023, 500_000)
 slip = BorrowingSlip("PM003", gv, "A103", datetime(2024, 1, 10))
 try:
@@ -58,7 +58,7 @@ except DuplicateDeviceException as e:
     print("  Lỗi:", e)
 
 
-print("[4] Mượn micro 3 ngày (giới hạn 1 ngày)")
+print("4 Mượn micro 3 ngày (giới hạn 1 ngày)")
 mic = Microphone("TB301", "Micro 1 ngày", 2023, 500_000)
 slip = BorrowingSlip("PM004", gv, "A104", datetime(2024, 1, 10))
 try:
@@ -66,14 +66,14 @@ try:
 except InvalidBorrowPeriodException as e:
     print("  Lỗi:", e)
 
-print("[5] Trả máy chiếu không thuộc phiếu")
+print("5 Trả máy chiếu không thuộc phiếu")
 slip = BorrowingSlip("PM005", gv, "A105", datetime(2024, 1, 10))
 try:
     slip.return_device("TB999", datetime(2024, 1, 12))
 except DeviceNotInSlipException as e:
     print("  Lỗi:", e)
 
-print("[6] Trả cùng 1 thiết bị 2 lần")
+print("6 Trả cùng 1 thiết bị 2 lần")
 mic = Microphone("TB601", "Micro 6", 2023, 500_000)
 slip = BorrowingSlip("PM006", gv, "A106", datetime(2024, 1, 10))
 slip.add_device(mic, 1)
